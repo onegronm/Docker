@@ -47,7 +47,7 @@ docker run -dp 3000:3000 getting-started
 ```
 
 ## Sharing the App
-1. Create the repository in DockerHub.
+1. Create the repository on Docker Hub.
 
 2. Login.
 ```shell
