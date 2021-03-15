@@ -19,7 +19,7 @@ docker build -t getting-started .
 docker run -dp 3000:3000 getting-started
 ```
 
-## Build updated version of the image
+## Updating the App's Container Image
 ```shell
 docker build -t getting-started .
 ```
