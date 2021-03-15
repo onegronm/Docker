@@ -26,7 +26,9 @@ docker build -t getting-started .
 
 ## Replacing our Old Container
 1. Get the ID of the container by using the docker ps command.
-```shell docker ps
+```shell 
+docker ps
+```
 
 2. Use the docker stop command to stop the container.
 ```shell
@@ -35,7 +37,11 @@ docker stop <the-container-id>
 ```
 
 3. Once the container has stopped, you can remove it by using the docker rm command.
-```shell docker rm <the-container-id>
+```shell 
+docker rm <the-container-id>
+```
 
 4. Now, start your updated container.
-```shell docker run -dp 3000:3000 getting-started
+```shell 
+docker run -dp 3000:3000 getting-started
+```
