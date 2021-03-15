@@ -77,12 +77,12 @@ docker run -dp 3000:3000 -v todo-db:/etc/todos getting-started
 
 3. Once the container starts up, open the app and add a few items to your todo list.
 
-4. Remove the container for the todo app. Use ```shell docker ps``` to get the ID and then remove it with
+4. Remove the container for the todo app. Use ```docker ps``` to get the ID and then remove it with
 ```shell
 docker rm -f <id>
 ```
 
-5. Use the ```shell docker volume inspect <the-volume-id>``` command to find where is Docker actually storing the data. The Mountpoint is the actual location on the disk where the data is stored. While running in Docker Desktop, the Docker commands are actually running inside a small VM on your machine. If you wanted to look at the actual contents of the Mountpoint directory, you would need to first get inside of the VM.
+5. Use the ```docker volume inspect <the-volume-id>``` command to find where is Docker actually storing the data. The Mountpoint is the actual location on the disk where the data is stored. While running in Docker Desktop, the Docker commands are actually running inside a small VM on your machine. If you wanted to look at the actual contents of the Mountpoint directory, you would need to first get inside of the VM.
 
 6. Restart the container and notice how the data was persisted.
 ```shell
