@@ -45,3 +45,27 @@ docker rm <the-container-id>
 ```shell 
 docker run -dp 3000:3000 getting-started
 ```
+
+## Sharing the App
+1. Create the repository in DockerHub.
+
+2. Login.
+```shell
+docker login -u YOUR-USER-NAME
+```
+
+3. Use the docker tag command to give the getting-started image a new name. Be sure to swap out YOUR-USER-NAME with your Docker ID.
+```shell
+docker tag getting-started YOUR-USER-NAME/getting-started
+```
+
+4. Run the push command you see on Docker Hub.
+```shell
+docker push YOUR-USER-NAME/getting-started
+```
+
+
+
+
+
+
