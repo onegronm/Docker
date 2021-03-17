@@ -142,6 +142,8 @@ docker run -dp 3000:3000 \
 ```
 
 5. Connect to the mysql database and prove that the items are being written to the database. Remember, the password is secret.
-```docker exec -ti <mysql-container-id> mysql -p todos```
+```shell
+docker exec -ti <mysql-container-id> mysql -p todos
+```
 
 
