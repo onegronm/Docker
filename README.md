@@ -89,6 +89,21 @@ docker rm -f <id>
 docker run -dp 3000:3000 -v todo-db:/etc/todos getting-started
 ```
 
+## Bind Mounts
+1. Use the -v flag to add a bind mount. When adding a bind mount to a docker run command, you can use the shortcut $(pwd), (or ${pwd} depending on your shell). It runs the shell command to print the current working directory, to avoid having to type out the entirety of your directory location
+```shell
+docker run -dp 3000:3000 \
+    -w /app -v ${PWD}:/app \
+    node:12-alpine \
+    sh -c "yarn install && yarn run dev"
+```
+
+2. Use ```docker inspect <container-id>``` to verify that the bind mount was created correctly. Look for the Mounts section.
+
+## Docker Logs
+```shell
+docker logs -f <container-id>
+```
 
 
 
