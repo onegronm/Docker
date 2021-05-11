@@ -146,4 +146,48 @@ docker run -dp 3000:3000 \
 docker exec -ti <mysql-container-id> mysql -p todos
 ```
 
+## Docker Compose
+Docker Compose is a tool that was developed to help define and share multi-container applications. With Compose, we can create a YAML file to define the services and with a single command, can spin everything up or tear it all down.
+
+1. Create the Compose file
+    - defined the 'app' service
+        - defined the ports for the service
+        - used relative paths to define the working directory and volumes
+        - defined the environment variables
+    - defined the 'mysql' service
+        - defined the service and called it 'mysql'
+        - defined the volume and volume mapping
+        - specified the environment variables  
+```shell
+version: "3.7"
+
+services:
+  app:
+    image: node:12-alpine
+    command: sh -c "yarn install && yarn run dev"
+    ports:
+      - 3000:3000
+    working_dir: /app
+    volumes:
+      - ./:/app
+    environment:
+      MYSQL_HOST: mysql
+      MYSQL_USER: root
+      MYSQL_PASSWORD: secret
+      MYSQL_DB: todos
+
+  mysql:
+    image: mysql:5.7
+    volumes:
+      - todo-mysql-data:/var/lib/mysql
+    environment: 
+      MYSQL_ROOT_PASSWORD: secret
+      MYSQL_DATABASE: todos
+
+volumes:
+  todo-mysql-data:
+```
+2. Start up the application stack using the ```docker-compose up``` command. We'll add the ```-d``` flag to run everything in the background.
+3. When you're ready to tear it all down, simply run ```docker-compose down``` or hit the trash can on the Docker Dashboard for the entire app. The containers will stop and the network will be removed. By default, named volumes in your compose file are NOT removed when running ```docker-compose down```. If you want to remove the volumes, you will need to add the ```--volumes``` flag.
+
 
