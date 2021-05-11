@@ -190,4 +190,13 @@ volumes:
 2. Start up the application stack using the ```docker-compose up``` command. We'll add the ```-d``` flag to run everything in the background.
 3. When you're ready to tear it all down, simply run ```docker-compose down``` or hit the trash can on the Docker Dashboard for the entire app. The containers will stop and the network will be removed. By default, named volumes in your compose file are NOT removed when running ```docker-compose down```. If you want to remove the volumes, you will need to add the ```--volumes``` flag.
 
-
+## Image Building Best Practices
+1. Scan a built image for security vulnerabilities
+```shell
+docker scan getting-started
+```
+2. Use the ```docker image history``` command to see the layers in the getting-started image. Each of the lines in the output represents a layer in the image. The output shows the base at the bottom with the newest layer at the top. Using this, you can also quickly see the size of each layer, helping diagnose large images.
+```shell
+docker image history getting-started
+```
+3. Once a layer changes, all downstream layers have to be recreated as well. Structure your Dockerfile to help support the caching of the dependencies. Use ```docker build -t getting-started``` to check which parts of the image are cached.
